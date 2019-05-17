@@ -1,6 +1,5 @@
 const middleware = store => next => action => {
   if (action.type !== 'PROMISE') {
-    console.log('Its promise');
     return next(action);
   }
   const [startAction, successAction, failureAction] = action.actions;
