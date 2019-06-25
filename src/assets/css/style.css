@@ -1,0 +1,62 @@
+.mb20 {
+  margin-bottom: 20px;
+}
+.no-padding {
+  padding: 0;
+}
+.load-spinner {
+  margin: 100px 48%;
+}
+
+/* Weather Card */
+.card-container {
+  justify-content: space-between;
+}
+.weather-card {
+  width: 255px;
+  background-color: #eef8fb;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 0;
+  margin-bottom: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.weather-card .weather-card__city {
+  font-size: 28px;
+}
+.weather-card .weather-card__country {
+  font-size: 12px;
+  display: inline-block;
+  transform: translateY(-15px);
+}
+.weather-card .weather-card__temp {
+  font-size: 48px;
+}
+.weather-card .weather-card__options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.weather-card .weather-card__options .weather-card__options-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.weather-card .weather-card__option-name {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Weather Forcast */
+.weather-forcast {
+  background-color: #eef8fb;
+  padding: 15px;
+}
+.weather-forcast .weather-forcast__city {
+  font-size: 20px;
+}
+
+.weather-forcast .weather-forcast__chart {
+}

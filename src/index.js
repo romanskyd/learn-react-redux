@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import App from './App';
 import store from './state';
-import {getIssues} from './api';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/css/style.css'
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -11,13 +13,5 @@ ReactDOM.render(
 	</Provider>, document.getElementById('root'));
 store.subscribe(() => {
 	console.log('New state: ', store.getState());
-});
-
-store.dispatch({
-	type: 'LOAD_ISSUES',
-	payload: [
-		{id: 1, name: 'First issue'},
-		{id: 2, name: 'Second issue'},
-	]
 });
 

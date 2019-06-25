@@ -13,13 +13,22 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default']
+    })
   ],
   module: {
     loaders: [{
       test: /\.js$/,
       loaders: [ 'babel'],
       include: path.join(__dirname, 'src')
+    },{
+      test: /\.css$/,
+      loaders: ['style-loader', 'css-loader']
     }]
   }
 };

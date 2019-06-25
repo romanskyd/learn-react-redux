@@ -2,26 +2,47 @@ import {connect} from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 
-import {loadIssues} from './actions';
+import WeatherCard from './components/WeatherCard';
+import WeatherForcast from './components/WeatherForcast';
+import {loadWeatherByName, loadWeatherByListIds, loadForcast5DaysById} from './actions';
 
 class App extends Component {
-  handleClick() {
-    this.props.loadIssues();
+  constructor (props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick (id) {
+    this.props.loadForcast5DaysById(id);
+  }
+  componentWillMount() {
+    this.props.loadWeatherByListIds('524894,491422,1496747,498817');
   }
   render() {
+    const loading = this.props.weather.isLoading ? <div className="spinner-border text-primary load-spinner" role="status">
+                                                    <span className="sr-only">Loading...</span>
+                                                  </div> : '';
+    const weatherList = this.props.weather.items.map(item => {
+      return (<WeatherCard key={item.id} weather={item} getForcast={this.handleClick}/>)
+    })
+    const weatherForcast = this.props.weather.forcast ? <WeatherForcast forcast={this.props.weather.forcast} /> : '';
     return (
-      <div>
-        <h1>Hello, world. {this.props.counter}</h1>
-        <button onClick={::this.handleClick}>Load issues</button>
-        <ul>
-          {this.props.issues.map(issue => <li>{issue.title}</li>)}
-        </ul>
+      <div className="container">
+        <div className="row">
+          <div className="col mb20">
+            <h1>World weather demo</h1>
+          </div>
+        </div>
+        <div className="row card-container">{weatherList}</div>
+        <div className="row">{loading}</div>
+        <div className="row">
+        {weatherForcast}
+        </div>
       </div>
-    );
+    )
   }
 }
 
 export default connect(
-  (state) => ({counter: state.counter, issues: state.issues}),
-  (dispatch) => bindActionCreators({loadIssues}, dispatch)
+  (state) => ({counter: state.counter, weather: state.weather}),
+  (dispatch) => bindActionCreators({loadWeatherByName, loadWeatherByListIds, loadForcast5DaysById}, dispatch),
 )(App);

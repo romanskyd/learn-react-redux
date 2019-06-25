@@ -1,5 +1,5 @@
 import counter from './counter';
-import issues from './issues';
+import weather from './weather';
 
 export {counter};
-export {issues};
+export {weather};
