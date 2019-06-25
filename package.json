@@ -1,14 +1,14 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "React weather demo app",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/romanskyd/learn-redux"
   },
   "keywords": [
     "react",
@@ -21,12 +21,12 @@
     "edit",
     "webpack"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "Dmitry Romansky (http://github.com/romanskyd)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "homepage": "",
   "devDependencies": {
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",

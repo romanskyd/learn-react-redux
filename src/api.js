@@ -21,6 +21,11 @@ class getWeather {
     .then(res => res.json());
   }
 
+  loadSearchList () {
+    return fetch ('')
+    .then(res => res.json())
+  }
+
 }
 
 export default new getWeather;

@@ -9,7 +9,8 @@ const store = createStoreWithMiddleware(reducer, {
 		isLoading: false,
 		items: [],
 		forcast: null
-	}
+	},
+	search: []
 });
 
 export default store;
