@@ -21,7 +21,7 @@ export default function(state = [], action) {
 				items: state.items,
 				forcast: action.data
 			}
-		case 'WEADER_SEARCHED_ADD':
+		case 'WEATHER_SEARCHED_ADD':
 			return {
 				isLoading: false,
 				items: (() => {

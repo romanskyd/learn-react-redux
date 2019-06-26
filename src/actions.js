@@ -27,7 +27,7 @@ export function loadForcast5DaysById(id){
 export function loadSearchedById(id){
   return {
     type: 'PROMISE',
-    actions: ['WEATHER_LOADING', 'WEADER_SEARCHED_ADD', 'WEATHER_LOAD_FAILTURE'],
+    actions: ['WEATHER_LOADING', 'WEATHER_SEARCHED_ADD', 'WEATHER_LOAD_FAILTURE'],
     promise: getWeather.byId(id)
   }
 }
