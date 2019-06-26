@@ -5,15 +5,32 @@ import { bindActionCreators } from 'redux';
 import WeatherCard from './components/WeatherCard';
 import WeatherForcast from './components/WeatherForcast';
 import SearchPanel from './components/SearchPanel';
-import {loadWeatherByName, loadWeatherByListIds, loadForcast5DaysById} from './actions';
+import {loadWeatherByName, loadWeatherByListIds, loadForcast5DaysById, loadSearchedById} from './actions';
+import searchHelper from './helpers/search.helper';
 
 class App extends Component {
   constructor (props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
+    this.handleSelectedCity = this.handleSelectedCity.bind(this);
+    this.items = [];
+    this.state = {searched: []};
   }
   handleClick (id) {
     this.props.loadForcast5DaysById(id);
+  }
+  handleSearchInput(value) {
+    const searchResultArr = searchHelper.searchByName(value);
+    if (searchResultArr.length) {
+      this.setState({searched: searchResultArr});
+    } else {
+      this.setState({searched: []});
+    }
+  }
+  handleSelectedCity(id) {
+    this.setState({searched: []});
+    this.props.loadSearchedById(id);
   }
   componentWillMount() {
     this.props.loadWeatherByListIds('524894,491422,1496747,498817');
@@ -34,7 +51,7 @@ class App extends Component {
           </div>
         </div>
         <div className="row">
-          <SearchPanel />
+          <SearchPanel items={this.state.searched} handler={this.handleSearchInput} selectHandler={this.handleSelectedCity}/>
         </div>
         <div className="row card-container">{weatherList}</div>
         <div className="row">{loading}</div>
@@ -48,5 +65,10 @@ class App extends Component {
 
 export default connect(
   (state) => ({weather: state.weather}),
-  (dispatch) => bindActionCreators({loadWeatherByName, loadWeatherByListIds, loadForcast5DaysById}, dispatch),
+  (dispatch) => bindActionCreators({
+    loadWeatherByName,
+    loadWeatherByListIds,
+    loadForcast5DaysById,
+    loadSearchedById
+  }, dispatch),
 )(App);

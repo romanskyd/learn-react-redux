@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   padding: 15px;
-  margin: 0;
+  margin: 0 15px;
   margin-bottom: 30px;
   justify-content: center;
   align-items: center;
@@ -58,5 +58,21 @@
   font-size: 20px;
 }
 
-.weather-forcast .weather-forcast__chart {
+/* Search Panel */
+.search-panel {
+  position: relative;
+}
+.search-panel .search-panel__item-list {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  top: 39px;
+}
+.search-panel .search-panel__item-list :first-child {
+  border-top: none;
+}
+.search-panel .search-panel__item-list .list-group-item:hover {
+  cursor: pointer;
+  background-color: #f8f9fa;
 }

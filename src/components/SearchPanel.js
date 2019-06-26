@@ -1,13 +1,22 @@
 import React from 'react';
 
-const SearchPanel = (props) => {
-  const click = () => {
-    //props.getForcast(props.weather.id)
+const SearchPanel = function (props) {
+  const changeHandler = (e) => {
+    props.handler(e.target.value);
+  }
+  const selectHandler = (id, name) => {
+    return function () {
+      props.selectHandler(id);
+      document.getElementById('search-input').value = name;
+    }
   }
   return (
     <div className="col mb20">
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Enter city name..." aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+      <div className="input-group search-panel">
+        <input type="text" id="search-input" onChange={changeHandler} className="form-control" placeholder="Enter city name... (Search in demo mode, without api)" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+      <ul className="list-group list-group-flush search-panel__item-list">
+        {props.items.map(el => <li className="list-group-item" key={el.id} onClick={selectHandler(el.id, el.name)}>{el.name} ({el.country})</li>)}
+      </ul>
       </div>
     </div>
   )

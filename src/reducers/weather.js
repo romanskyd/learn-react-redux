@@ -21,6 +21,16 @@ export default function(state = [], action) {
 				items: state.items,
 				forcast: action.data
 			}
+		case 'WEADER_SEARCHED_ADD':
+			return {
+				isLoading: false,
+				items: (() => {
+					return state.items.length < 4 ? state.items.concat([action.data]) : state.items.slice(1).concat([action.data])
+				})()
+			}
+		case 'WEATHER_LOAD_FAILTURE':
+			console.error('ERROR:', action.error)
+			return state;
 		default:
 			return state;
 	}

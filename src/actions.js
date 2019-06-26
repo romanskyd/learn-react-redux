@@ -23,3 +23,11 @@ export function loadForcast5DaysById(id){
     promise: getWeather.forecast5DaysById(id)
   }
 }
+
+export function loadSearchedById(id){
+  return {
+    type: 'PROMISE',
+    actions: ['WEATHER_LOADING', 'WEADER_SEARCHED_ADD', 'WEATHER_LOAD_FAILTURE'],
+    promise: getWeather.byId(id)
+  }
+}
