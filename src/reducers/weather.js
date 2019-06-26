@@ -1,3 +1,5 @@
+import consts from '../constants'
+
 export default function(state = [], action) {
 	switch (action.type) {
 		case 'WEATHER_LOADING':
@@ -25,7 +27,7 @@ export default function(state = [], action) {
 			return {
 				isLoading: false,
 				items: (() => {
-					return state.items.length < 4 ? state.items.concat([action.data]) : state.items.slice(1).concat([action.data])
+					return state.items.length < consts.itemsOnPage ? state.items.concat([action.data]) : state.items.slice(1).concat([action.data])
 				})()
 			}
 		case 'WEATHER_LOAD_FAILTURE':

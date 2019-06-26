@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import config from './config/env'
-class getWeather {
+class GetWeather {
   constructor () {
     this.appId = config.appId;
   }
@@ -27,4 +27,4 @@ class getWeather {
 
 }
 
-export default new getWeather;
+export default new GetWeather;

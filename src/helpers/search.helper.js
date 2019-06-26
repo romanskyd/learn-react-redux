@@ -1,5 +1,8 @@
+import consts from '../constants'
+
 class SearchHelper {
   constructor() {
+    this.consts = consts;
     this.cities = [
       {
         "id": 707860,
@@ -988,7 +991,7 @@ class SearchHelper {
     if (string) {
       const str = new RegExp('^' + string.trim());
       const arr = this.cities.filter(el => str.test(el.name.toLowerCase()));
-      return arr.slice(0, 7);
+      return arr.slice(0, this.consts.searchedListSize);
     } else {
       return [];
     }

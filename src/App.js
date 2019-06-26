@@ -21,12 +21,7 @@ class App extends Component {
     this.props.loadForcast5DaysById(id);
   }
   handleSearchInput(value) {
-    const searchResultArr = searchHelper.searchByName(value);
-    if (searchResultArr.length) {
-      this.setState({searched: searchResultArr});
-    } else {
-      this.setState({searched: []});
-    }
+    this.setState({searched: searchHelper.searchByName(value)});
   }
   handleSelectedCity(id) {
     this.setState({searched: []});
@@ -55,9 +50,7 @@ class App extends Component {
         </div>
         <div className="row">{weatherList}</div>
         <div className="row">{loading}</div>
-        <div className="row">
-        {weatherForcast}
-        </div>
+        <div className="row">{weatherForcast}</div>
       </div>
     )
   }
