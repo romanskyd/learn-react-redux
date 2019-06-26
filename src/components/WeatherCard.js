@@ -7,7 +7,8 @@ const WeatherCard = (props) => {
     props.getForcast(props.weather.id)
   }
   return (
-    <div className="col weather-card">
+    <div className="col-sm-6 col-md-6 col-lg-3 mb15">
+      <div className="weather-card">
       <div className="weather-card__city">{props.weather.name}<span className="weather-card__country">{props.weather.sys.country}</span></div>
       <div className="weather-card__temp">
         <img src={icon} alt={props.weather.weather[0].main} title={props.weather.weather[0].description}/>
@@ -24,6 +25,7 @@ const WeatherCard = (props) => {
         </div>
       </div>
       <button  type="button" className="btn btn-link" onClick={click}>Load forcast</button>
+      </div>
     </div>
   )
 }

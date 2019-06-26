@@ -46,14 +46,14 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col mb20">
+          <div className="col mb20 mt20">
             <h1>World weather demo</h1>
           </div>
         </div>
         <div className="row">
           <SearchPanel items={this.state.searched} handler={this.handleSearchInput} selectHandler={this.handleSelectedCity}/>
         </div>
-        <div className="row card-container">{weatherList}</div>
+        <div className="row">{weatherList}</div>
         <div className="row">{loading}</div>
         <div className="row">
         {weatherForcast}
