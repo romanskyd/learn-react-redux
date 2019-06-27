@@ -17,9 +17,9 @@ const SearchPanel = function (props) {
     <div className="col mb20">
       <div className="input-group search-panel">
         <input type="text" id="search-input" onChange={changeHandler} onFocus={clearInput} className="form-control" placeholder="Enter city name... (Search in demo mode, without api)" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-      <ul className="list-group list-group-flush search-panel__item-list">
-        {props.items.map(el => <li className="list-group-item" key={el.id} onClick={selectHandler(el.id, el.name)}>{el.name} ({el.country})</li>)}
-      </ul>
+        <ul className="list-group list-group-flush search-panel__item-list">
+          {props.items.map(el => <li className="list-group-item" key={el.id} onClick={selectHandler(el.id, el.name)}>{el.name} ({el.country})</li>)}
+        </ul>
       </div>
     </div>
   )

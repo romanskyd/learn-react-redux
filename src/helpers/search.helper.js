@@ -998,4 +998,4 @@ class SearchHelper {
   }
 }
 
-export default new SearchHelper;
+export default new SearchHelper();

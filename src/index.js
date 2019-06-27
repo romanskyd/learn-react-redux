@@ -8,9 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css'
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>, document.getElementById('root'));
+  <Provider store={store}>
+	  <App />
+  </Provider>, document.getElementById('root'));
 store.subscribe(() => {
   console.log('New state: ', store.getState());
 });

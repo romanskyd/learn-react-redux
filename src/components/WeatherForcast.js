@@ -49,11 +49,11 @@ const WeatherForcast = (props) => {
     <div className="col">
       <div className="weather-forcast">
         <div className="weather-forcast__chart">
-        < Line
-          data={data}
-          height={300}
-          options={options}
-          width={0}
+          < Line
+            data={data}
+            height={300}
+            options={options}
+            width={0}
           />
         </div>
       </div>

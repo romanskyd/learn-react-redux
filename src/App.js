@@ -32,8 +32,8 @@ class App extends Component {
   }
   render() {
     const loading = this.props.weather.isLoading ? <div className="spinner-border text-primary load-spinner" role="status">
-                                                    <span className="sr-only">Loading...</span>
-                                                  </div> : '';
+      <span className="sr-only">Loading...</span>
+    </div> : '';
     const weatherList = this.props.weather.items.map(item => {
       return (<WeatherCard key={item.id} weather={item} getForcast={this.handleClick}/>)
     })
