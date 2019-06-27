@@ -13,8 +13,8 @@ const WeatherForcast = (props) => {
   }
   const options = {
     title: {
-        display: true,
-        text: '5 day weather forecast in ' + props.forcast.city.name
+      display: true,
+      text: '5 day weather forecast in ' + props.forcast.city.name
     },
     legend: {
       display: false,
@@ -24,10 +24,10 @@ const WeatherForcast = (props) => {
     },
     scales: {
       xAxes: [{
-          type: 'time',
-          time: {
-              unit: 'day'
-          }
+        type: 'time',
+        time: {
+          unit: 'day'
+        }
       }]
     },
     tooltips: {
@@ -35,7 +35,7 @@ const WeatherForcast = (props) => {
         label: (tooltipItem, data) => {
           let label = data.datasets[tooltipItem.datasetIndex].label || '';
           if (label) {
-              label += ': ';
+            label += ': ';
           }
           label += Math.round(tooltipItem.yLabel * 10) / 10;
           label += ' °C'
@@ -43,7 +43,7 @@ const WeatherForcast = (props) => {
         }
       }
     }
-}
+  }
 
   return (
     <div className="col">

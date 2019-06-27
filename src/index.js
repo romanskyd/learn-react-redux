@@ -12,6 +12,6 @@ ReactDOM.render(
 		<App />
 	</Provider>, document.getElementById('root'));
 store.subscribe(() => {
-	console.log('New state: ', store.getState());
+  console.log('New state: ', store.getState());
 });
 
