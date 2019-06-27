@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import WeatherCard from './components/WeatherCard';
 import WeatherForcast from './components/WeatherForcast';
 import SearchPanel from './components/SearchPanel';
-import {loadWeatherByName, loadWeatherByListIds, loadForcast5DaysById, loadSearchedById} from './actions';
+import * as actionCreators from './actions';
 import searchHelper from './helpers/search.helper';
 
 class App extends Component {
@@ -18,17 +18,17 @@ class App extends Component {
     this.state = {searched: []};
   }
   handleClick (id) {
-    this.props.loadForcast5DaysById(id);
+    this.props.actions.loadForcast5DaysById(id);
   }
   handleSearchInput(value) {
     this.setState({searched: searchHelper.searchByName(value)});
   }
   handleSelectedCity(id) {
     this.setState({searched: []});
-    this.props.loadSearchedById(id);
+    this.props.actions.loadSearchedById(id);
   }
   componentWillMount() {
-    this.props.loadWeatherByListIds('524894,491422,1496747,498817');
+    this.props.actions.loadWeatherByListIds('524894,491422,1496747,498817');
   }
   render() {
     const loading = this.props.weather.isLoading ? <div className="spinner-border text-primary load-spinner" role="status">
@@ -58,10 +58,5 @@ class App extends Component {
 
 export default connect(
   (state) => ({weather: state.weather}),
-  (dispatch) => bindActionCreators({
-    loadWeatherByName,
-    loadWeatherByListIds,
-    loadForcast5DaysById,
-    loadSearchedById
-  }, dispatch),
+  (dispatch) => ({actions: bindActionCreators(actionCreators, dispatch)}),
 )(App);
