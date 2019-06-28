@@ -1,5 +1,4 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import promisesMiddleware from './middlewares/promises';
 import * as reducers from './reducers';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
