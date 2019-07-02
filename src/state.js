@@ -6,11 +6,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const reducer = combineReducers(reducers);
 
 const initialState = {
-  weather: {
-    isLoading: false,
-    items: [],
-    forcast: null
-  }
+  weather: [],
+  forecast: null,
+  loading: false
 }
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
 

@@ -1,20 +1,20 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const WeatherForcast = (props) => {
+const WeatherForecast = (props) => {
   const data= {
-    labels: props.forcast.list.map(el => el.dt_txt),
+    labels: props.forecast.list.map(el => el.dt_txt),
     datasets: [{
       label: 'temp',
       backgroundColor: 'rgba(255, 255, 255, 0)',
       borderColor: 'rgb(255, 99, 132)',
-      data: props.forcast.list.map(el => ({x: el.dt * 1000, y: el.main.temp})),
+      data: props.forecast.list.map(el => ({x: el.dt * 1000, y: el.main.temp})),
     }]
   }
   const options = {
     title: {
       display: true,
-      text: '5 day weather forecast in ' + props.forcast.city.name
+      text: '5 day weather forecast in ' + props.forecast.city.name
     },
     legend: {
       display: false,
@@ -47,8 +47,8 @@ const WeatherForcast = (props) => {
 
   return (
     <div className="col">
-      <div className="weather-forcast">
-        <div className="weather-forcast__chart">
+      <div className="weather-forecast">
+        <div className="weather-forecast__chart">
           < Line
             data={data}
             height={300}
@@ -61,4 +61,4 @@ const WeatherForcast = (props) => {
   )
 }
 
-export default WeatherForcast;
+export default WeatherForecast;

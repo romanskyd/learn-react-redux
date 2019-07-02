@@ -10,10 +10,18 @@
 .no-padding {
   padding: 0;
 }
-.load-spinner {
-  margin: 100px 48%;
+.app-container {
+  position: relative;
 }
-
+.loading {
+  position: fixed;
+  z-index: 5;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* Weather Card */
 .card-container {
   display: flex;
@@ -58,12 +66,12 @@
   color: #666;
 }
 
-/* Weather Forcast */
-.weather-forcast {
+/* Weather Forecast */
+.weather-forecast {
   background-color: #eef8fb;
   padding: 15px;
 }
-.weather-forcast .weather-forcast__city {
+.weather-forecast .weather-forecast__city {
   font-size: 20px;
 }
 

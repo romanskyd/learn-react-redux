@@ -2,21 +2,30 @@ import GetWeather from './api'
 
 export function loadWeatherByListIds(ids){
   return function(dispatch) {
-    dispatch({type: 'WEATHER_LOADING'})
-    GetWeather.byListIds(ids).then(data => dispatch({type:'WEATHER_LIST_LOADED', data}));
+    dispatch({type: 'LOADING_START'});
+    GetWeather.byListIds(ids).then(data => {
+      dispatch({type: 'LOADING_END'});
+      dispatch({type:'WEATHER_LIST_LOADED', data});
+    });
   }
 }
 
-export function loadForcast5DaysById(id){
+export function loadForecast5DaysById(id){
   return function (dispatch) {
-    dispatch({type: 'WEATHER_LOADING'})
-    GetWeather.forecast5DaysById(id).then(data => dispatch({type:'FORCAST_5_DAYS_LOADED', data}));
+    dispatch({type: 'LOADING_START'})
+    GetWeather.forecast5DaysById(id).then(data => {
+      dispatch({type: 'LOADING_END'});
+      dispatch({type:'FORECAST_5_DAYS_LOADED', data});
+    });
   }
 }
 
 export function loadSearchedById(id){
   return function (dispatch) {
-    dispatch({type: 'WEATHER_LOADING'});
-    GetWeather.byId(id).then(data => dispatch({type:'WEATHER_SEARCHED_ADD', data}));
+    dispatch({type: 'LOADING_START'});
+    GetWeather.byId(id).then(data => {
+      dispatch({type: 'LOADING_END'});
+      dispatch({type:'WEATHER_SEARCHED_ADD', data});
+    });
   }
 }

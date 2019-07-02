@@ -4,7 +4,7 @@ const WeatherCard = (props) => {
   const temp = parseInt(props.weather.main.temp);
   const icon = `https://openweathermap.org/img/w/${props.weather.weather[0].icon}.png`;
   const click = () => {
-    props.getForcast(props.weather.id)
+    props.getForecast(props.weather.id)
   }
   return (
     <div className="col-sm-6 col-md-6 col-lg-3 mb15">
@@ -24,7 +24,7 @@ const WeatherCard = (props) => {
             <div><span className="weather-card__option-name">Humidity: </span>{props.weather.main.humidity} %</div>
           </div>
         </div>
-        <button  type="button" className="btn btn-link" onClick={click}>Load forcast</button>
+        <button  type="button" className="btn btn-link" onClick={click}>Load forecast</button>
       </div>
     </div>
   )

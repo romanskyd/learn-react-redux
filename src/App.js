@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 
 import WeatherCard from './components/WeatherCard';
-import WeatherForcast from './components/WeatherForcast';
+import WeatherForecast from './components/WeatherForecast';
 import SearchPanel from './components/SearchPanel';
 import * as actionCreators from './actions';
 import searchHelper from './helpers/search.helper';
@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {searched: []};
   }
   handleClick (id) {
-    this.props.actions.loadForcast5DaysById(id);
+    this.props.actions.loadForecast5DaysById(id);
   }
   handleSearchInput(value) {
     this.setState({searched: searchHelper.searchByName(value)});
@@ -31,15 +31,15 @@ class App extends Component {
     this.props.actions.loadWeatherByListIds('524894,491422,1496747,498817');
   }
   render() {
-    const loading = this.props.weather.isLoading ? <div className="spinner-border text-primary load-spinner" role="status">
-      <span className="sr-only">Loading...</span>
-    </div> : '';
-    const weatherList = this.props.weather.items.map(item => {
-      return (<WeatherCard key={item.id} weather={item} getForcast={this.handleClick}/>)
+    const loading = this.props.loading ? <div className="loading"><div className="spinner-border text-primary load-spinner" role="status">
+                                          <span className="sr-only">Loading...</span>
+                                        </div></div> : '';
+    const weatherList = this.props.weather.map(item => {
+      return (<WeatherCard key={item.id} weather={item} getForecast={this.handleClick}/>)
     })
-    const weatherForcast = this.props.weather.forcast ? <WeatherForcast forcast={this.props.weather.forcast} /> : '';
+    const weatherForecast = this.props.forecast ? <WeatherForecast forecast={this.props.forecast} /> : '';
     return (
-      <div className="container">
+      <div className="container app-container">
         <div className="row">
           <div className="col mb20 mt20">
             <h1>World weather demo</h1>
@@ -49,14 +49,18 @@ class App extends Component {
           <SearchPanel items={this.state.searched} handler={this.handleSearchInput} selectHandler={this.handleSelectedCity}/>
         </div>
         <div className="row">{weatherList}</div>
-        <div className="row">{loading}</div>
-        <div className="row">{weatherForcast}</div>
+        <div className="row">{weatherForecast}</div>
+        {loading}
       </div>
     )
   }
 }
 
 export default connect(
-  (state) => ({weather: state.weather}),
+  (state) => ({
+    weather: state.weather,
+    loading: state.loading,
+    forecast: state.forecast
+  }),
   (dispatch) => ({actions: bindActionCreators(actionCreators, dispatch)}),
 )(App);

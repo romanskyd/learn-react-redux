@@ -2,34 +2,12 @@ import consts from '../constants'
 
 export default function(state = [], action) {
   switch (action.type) {
-  case 'WEATHER_LOADING':
-    return {
-      isLoading: true,
-      items: state.items
-    };
   case 'WEATHER_LOADED':
-    return {
-      isLoading: false,
-      items: state.items.concat([action.data])
-    };
+    return [...state, action.data];
   case 'WEATHER_LIST_LOADED':
-    return {
-      isLoading: false,
-      items: state.items.concat(action.data.list)
-    };
-  case 'FORCAST_5_DAYS_LOADED':
-    return {
-      isLoading: false,
-      items: state.items,
-      forcast: action.data
-    }
+    return [...state, ...action.data.list];
   case 'WEATHER_SEARCHED_ADD':
-    return {
-      isLoading: false,
-      items: (() => {
-        return state.items.length < consts.itemsOnPage ? state.items.concat([action.data]) : state.items.slice(1).concat([action.data])
-      })()
-    }
+    return state.length < consts.itemsOnPage ? [...state, action.data] : [...state.slice(1), action.data]
   case 'WEATHER_LOAD_FAILTURE':
     console.error('ERROR:', action.error)
     return state;
