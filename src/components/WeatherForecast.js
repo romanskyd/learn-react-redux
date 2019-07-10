@@ -46,7 +46,7 @@ const WeatherForecast = (props) => {
   }
 
   return (
-    <div className="col">
+    <div className="col animated fadeInUp">
       <div className="weather-forecast">
         <div className="weather-forecast__chart">
           < Line
