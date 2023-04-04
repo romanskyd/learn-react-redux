@@ -8,7 +8,7 @@ export default function(state = [], action) {
     return [...state, ...action.data.list];
   case 'WEATHER_SEARCHED_ADD':
     return state.length < consts.itemsOnPage ? [...state, action.data] : [...state.slice(1), action.data]
-  case 'WEATHER_LOAD_FAILTURE':
+  case 'WEATHER_LOAD_FAILURE':
     console.error('ERROR:', action.error)
     return state;
   default:

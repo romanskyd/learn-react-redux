@@ -1,1 +1,1 @@
-Demo here: https://romanskyd.github.io/
+A learning project (React, Redux, weather api)
